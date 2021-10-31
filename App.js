@@ -10,7 +10,8 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
-  Alert
+  Alert,
+  Share
 } from 'react-native';
 import { Card, SearchBar } from 'react-native-elements';
 
@@ -23,9 +24,13 @@ class App extends Component {
   updateSearch = (search) => {
     this.setState({ search });
   };
+  onShare = () => {
+      result = Share.share({
+      message:
+        'Deliveroo Clone : https://github.com/Lucasinho11/Deliveroo-React',
+    });
+  };
   render(){
-
-  
   const { search } = this.state;
   return (
     
@@ -42,7 +47,7 @@ class App extends Component {
             </View>
             
         </View>  
-        <SearchBar placeholder="Plats, desserts..." lightTheme onChangeText={this.updateSearch} value={search} containerStyle={{backgroundColor: 'transparent', borderTopColor: 'transparent', borderBottomColor: 'transparent'}} inputContainerStyle={{borderRadius: 100, backgroundColor: 'white', shadowColor: "#000", shadowOffset: { width: 0, height: 6,},shadowOpacity: 0.37,shadowRadius: 7.49,elevation: 12, }} color='black'/> 
+        <SearchBar placeholder="Plats, desserts..." lightTheme onChangeText={this.updateSearch} value={search} containerStyle={{ paddingBottom: 0, backgroundColor: 'transparent', borderTopColor: 'transparent', borderBottomColor: 'transparent', shadowColor: "#000", shadowOffset: { width: 0, height: 7, }, shadowOpacity: 0.41, shadowRadius: 9.11, elevation: 14,}} inputContainerStyle={{borderRadius: 100, backgroundColor: 'white'}} color='black'/> 
         <ScrollView>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{paddingBottom: 10, paddingLeft: 10}}>
             <Card containerStyle={styles.cardCategories}>
@@ -238,11 +243,14 @@ class App extends Component {
             </ScrollView>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}>
-            <TouchableOpacity onPress={() => Alert.alert('🤡 Et bah ca marche pas 🤡')} style={{backgroundColor: '#00c2b3', textAlign: 'center', borderRadius: 10, width: 300, marginBottom: 30}}>
+            <TouchableOpacity onPress={() => Alert.alert('🤡 Et bah ca marche pas 🤡')} style={{backgroundColor: '#00c2b3', textAlign: 'center', borderRadius: 10, width: 300}}>
               <View style={styles.button}>
                 <Text style={{textAlign: 'center',paddingVertical: 10, color: 'white' }}>Afficher les 3260 restaurants</Text>
               </View>
             </TouchableOpacity>
+          </View>
+          <View style={{ marginTop: 50, paddingBottom: 10 }}>
+            <Button onPress={this.onShare} title="Partager" />
           </View>
           
         </ScrollView>
@@ -392,9 +400,9 @@ const styles = StyleSheet.create({
     height: 180,
     borderWidth: 0,
     padding: 0,
-    margin: 4,
     marginTop: 10,
     marginBottom: 10,
+    marginRight: -5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
