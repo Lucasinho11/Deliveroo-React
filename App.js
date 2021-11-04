@@ -249,7 +249,7 @@ class App extends Component {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={{ marginTop: 50, paddingBottom: 10 }}>
+          <View style={{ marginTop: 10, paddingBottom: 10 }}>
             <Button onPress={this.onShare} title="Partager" />
           </View>
           
